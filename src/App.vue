@@ -21,8 +21,8 @@
 
             <div class="order-2 md:order-3 flex flex-wrap items-center justify-end mr-0 md:mr-4" id="nav-content">
                 <div class="auth flex items-center w-full md:w-full">
-                    <button class="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">Sign in</button>
-                    <button class="bg-blue-600 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100">Sign up</button>
+                    <button class="bg-yellow-200 text-gray-800  p-2 rounded border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">Sign in</button>
+                    <button class="bg-blue-200 text-gray-800  p-2 rounded border border-gray-100 hover:bg-gray-100 hover:text-gray-700">Sign up</button>
                 </div>
             </div>
         </div>
@@ -32,27 +32,27 @@
         <div class="container mx-auto">
             <div class="flex justify-center px-6 my-12">
                 <!-- Row -->
-                <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+                <div class="w-full xl:w-3/4 lg:w-13/15 flex">
                     <!-- Col -->
-                    <div class="w-full h-auto p-6 border border-blue-50  hidden lg:block lg:w-5/12 bg-cover rounded-l-lg">
-                        <h3 class="pt-4 text-2xl text-center">Create an Product!</h3>
-                        <form v-on:submit.prevent="addNewProduct" class="p-4 bg-white rounded">
+                    <div class="w-full h-auto p-6 border border-blue-200  hidden lg:block lg:w-8/12 bg-cover rounded-l-lg">
+                        <h3 class="pt-4 text-2xl text-center">Biodata PNS</h3>
+                        <form v-on:submit.prevent="TambahDataPegawai" class="p-4 bg-white rounded">
                             <div class="grid grid-cols-4 gap-4 p-2">
-                                <div class="md:col-span-1 col-span-4">Kode Barang</div>
+                                <div class="md:col-span-1 col-span-4">NIP</div>
                                 <div class="md:col-span-3 col-span-4">
-                                    <input type="text" v-model="inputP.code" class="border border-red-400 rounded">
+                                    <input type="text" v-model="inputP.nip_pegawai" class="border border-blue-400 rounded">
                                 </div>
                             </div>
                             <div class="grid grid-cols-4 gap-4 p-2">
-                                <div class="md:col-span-1 col-span-4">Nama Barang</div>
+                                <div class="md:col-span-1 col-span-4">Nama Pegawai</div>
                                 <div class="md:col-span-3 col-span-4">
-                                    <input type="text" v-model="inputP.name" class="border border-red-400 rounded">
+                                    <input type="text" v-model="inputP.nama_pegawai" class="border border-blue-400 rounded">
                                 </div>
                             </div>
                             <div class="grid grid-cols-4 gap-4 p-2">
-                                <div class="md:col-span-1 col-span-4">Tipe Barang</div>
+                                <div class="md:col-span-1 col-span-4">Jenis Kelamin</div>
                                 <div class="md:col-span-3 col-span-4">
-                                    <select v-model="inputP.typeID" class="border border-red-400 rounded" id="">
+                                    <select v-model="inputP.jenis_kelamin" class="border border-blue-400 rounded" id="">
                                         <option v-for="item in items" :value="item.id" :key="item.id">
                                                 {{item.type}}
                                         </option>
@@ -60,13 +60,19 @@
                                 </div>
                             </div>
                             <div class="grid grid-cols-4 gap-4 p-2">
-                                <div class="md:col-span-1 col-span-4">Harga Barang</div>
+                                <div class="md:col-span-1 col-span-4">Usia Pegawai</div>
                                 <div class="md:col-span-3 col-span-4">
-                                    <input type="number" v-model="inputP.price" class="border border-red-400 rounded">
+                                    <input type="number" v-model="inputP.usia_pegawai" class="border border-blue-400 rounded">
                                 </div>
                             </div>
                             <div class="grid grid-cols-4 gap-4 p-2">
-                                <button class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block">Save</button>
+                                <div class="md:col-span-1 col-span-4">Alamat Pegawai</div>
+                                <div class="md:col-span-3 col-span-4">
+                                    <input type="text" v-model="inputP.alamat_pegawai" class="border border-blue-400 rounded">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-4 gap-4 p-2">
+                                <button class="py-2 px-3 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block">Save</button>
                             </div>
                             <div class="grid grid-cols-4 gap-4 p-2">
                                 {{ message }}
@@ -74,34 +80,38 @@
                         </form>
                     </div>
                     <!-- Col -->
-                    <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none bg-gray-100">
-                        <h3 class="pt-4 text-2xl text-center">Product List</h3>
+                    <div class="w-full lg:w-13/12 bg-white p-5 rounded-lg lg:rounded-l-none bg-blue-100">
+                        <h3 class="pt-2 text-2xl text-center">List Biodata</h3>
                         <table class="w-full">
                             <thead>
-                                <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                                    <th>Code</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Price</th>
+                                <tr class="text-s font-semibold tracking-wide text-left text-blue-900 bg-yellow-100 uppercase border-b border-gray-600">
+                                    <th>Nip Pegawai</th>
+                                    <th>Nama Pegawai</th>
+                                    <th>Status Pegawai</th>
+                                    <th>Usia Pegawai</th>
+                                    <th>Alamat Pegawai</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in products" :key="index" class="text-gray-700">
                                     <td class="px-4 py-3 border">
-                                        {{ item.code }}
+                                        {{ item.nip_pegawai }}
                                     </td>
                                     <td class="px-4 py-3 border">
-                                        {{ item.name }}
+                                        {{ item.nama_pegawai }}
                                     </td>
                                     <td class="px-4 py-3 border">
-                                        {{getType(item.typeID)}}
+                                        {{getType(item.jenis_kelamin)}}
                                     </td>
                                     <td class="px-4 py-3 border">
-                                        {{ item.price }}
+                                        {{ item.usia_pegawai }}
                                     </td>
                                     <td class="px-4 py-3 border">
-                                        <button v-on:click="products.splice(index, 1)">Remove</button>
+                                        {{ item.alamat_pegawai }}
+                                    </td>
+                                    <td class="px-4 py-3 border">
+                                        <button v-on:click="products.splice(index, 1)">Remove</button>||
                                         <button v-on:click="editProduct(index, item)">Edit</button>
                                     </td>
                                 </tr>
@@ -118,7 +128,7 @@
 <script>
 
 export default {
-  name: 'App',
+  nama_pegawai: 'App',
   components: {
   },
   data() {
@@ -127,10 +137,10 @@ export default {
             message: '',
             items: [{
                 id: 1,
-                type: 'Minuman'
+                type: 'Laki-laki'
             }, {
                 id: 2,
-                type: 'Makanan'
+                type: 'Perempuan'
             }],
             products: [],
             productID: 1,
@@ -138,34 +148,38 @@ export default {
     }
   },
   methods: {
-    addNewProduct: function() {
+    TambahDataPegawai: function() {
                 if (this.ind != null) {
                     Object.assign(this.products[this.ind], {
-                        code: this.inputP.code,
-                        name: this.inputP.name,
-                        typeID: this.inputP.typeID,
-                        price: this.inputP.price
+                        nip_pegawai: this.inputP.nip_pegawai,
+                        nama_pegawai: this.inputP.nama_pegawai,
+                        jenis_kelamin: this.inputP.jenis_kelamin,
+                        usia_pegawai: this.inputP.usia_pegawai,
+                        alamat_pegawai: this.inputP.alamat_pegawai
                     })
                 } else {
                     this.products.push({
-                        code: this.inputP.code,
-                        name: this.inputP.name,
-                        typeID: this.inputP.typeID,
-                        price: this.inputP.price
+                        nip_pegawai: this.inputP.nip_pegawai,
+                        nama_pegawai: this.inputP.nama_pegawai,
+                        jenis_kelamin: this.inputP.jenis_kelamin,
+                        usia_pegawai: this.inputP.usia_pegawai,
+                        alamat_pegawai: this.inputP.alamat_pegawai
                     })
                 }
-                this.inputP.code = "";
-                this.inputP.name = "";
-                this.inputP.typeID = "";
-                this.inputP.price = "";
+                this.inputP.nip_pegawai = "";
+                this.inputP.nama_pegawai = "";
+                this.inputP.jenis_kelamin = "";
+                this.inputP.usia_pegawai = "";
+                this.inputP.alamat_pegawai = "";
                 this.ind = null;
             },
             editProduct: function(ind, p) {
                 this.ind = ind;
-                this.inputP.code = p.code;
-                this.inputP.name = p.name;
-                this.inputP.typeID = p.typeID;
-                this.inputP.price = p.price;
+                this.inputP.nip_pegawai = p.nip_pegawai;
+                this.inputP.nama_pegawai = p.nama_pegawai;
+                this.inputP.jenis_kelamin = p.jenis_kelamin;
+                this.inputP.usia_pegawai = p.usia_pegawai;
+                this.inputP.usia_pegawai = p.alamat_pegawai;
             },
             getType: function(id) {
                 // var m = this.items.filter(function(item) {
@@ -175,8 +189,8 @@ export default {
                     if (elem.id == id) return elem;
                 });
                 return m[0].type;
+
             }
   }
 }
 </script>
-
