@@ -13,7 +13,7 @@
                 <nav>
                     <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
                         <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">Home</a></li>
-                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">Products</a></li>
+                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">Setting</a></li>
                         <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">About</a></li>
                     </ul>
                 </nav>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="grid grid-cols-4 gap-4 p-2">
-                                <button class="py-2 px-3 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block">Save</button>
+                                <button class="py-2 px-2 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block">Save</button>
                             </div>
                             <div class="grid grid-cols-4 gap-4 p-2">
                                 {{ message }}
@@ -81,23 +81,23 @@
                     </div>
                     <!-- Col -->
                     <div class="w-full lg:w-13/12 bg-white p-5 rounded-lg lg:rounded-l-none bg-blue-100">
-                        <h3 class="pt-2 text-2xl text-center">List Biodata</h3>
+                        <h3 class="pt-4 text-2xl text-center">List Biodata</h3>
                         <table class="w-full">
                             <thead>
                                 <tr class="text-s font-semibold tracking-wide text-left text-blue-900 bg-yellow-100 uppercase border-b border-gray-600">
-                                    <th>Nip Pegawai</th>
-                                    <th>Nama Pegawai</th>
-                                    <th>Status Pegawai</th>
-                                    <th>Usia Pegawai</th>
-                                    <th>Alamat Pegawai</th>
-                                    <th>Aksi</th>
+                                    <th align=center>Nip Pegawai</th>
+                                    <th align=center>Nama Pegawai</th>
+                                    <th align=center>Status Pegawai</th>
+                                    <th align=center>Usia Pegawai</th>
+                                    <th align=center>Alamat Pegawai</th>
+                                    <th align=center>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr v-for="(item, index) in products" :key="index" class="text-gray-700">
+                            <tbody> 
+                                <tr v-for="(item, index) in Setting" :key="index" class="text-gray-700">
                                     <td class="px-4 py-3 border">
                                         {{ item.nip_pegawai }}
-                                    </td>
+                                    </td> 
                                     <td class="px-4 py-3 border">
                                         {{ item.nama_pegawai }}
                                     </td>
@@ -111,8 +111,8 @@
                                         {{ item.alamat_pegawai }}
                                     </td>
                                     <td class="px-4 py-3 border">
-                                        <button v-on:click="products.splice(index, 1)">Remove</button>||
-                                        <button v-on:click="editProduct(index, item)">Edit</button>
+                                        <button class="bg-red-400 py-1 px-2 rounded-lg text-white" v-on:click="Setting.splice(index, 1)">Remove</button>||
+                                        <button class="bg-yellow-400 py-1 px-2 rounded-lg text-white" v-on:click="editProduct(index, item)">Edit</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -142,7 +142,7 @@ export default {
                 id: 2,
                 type: 'Perempuan'
             }],
-            products: [],
+            Setting: [],
             productID: 1,
             ind: null
     }
@@ -150,7 +150,7 @@ export default {
   methods: {
     TambahDataPegawai: function() {
                 if (this.ind != null) {
-                    Object.assign(this.products[this.ind], {
+                    Object.assign(this.Setting[this.ind], {
                         nip_pegawai: this.inputP.nip_pegawai,
                         nama_pegawai: this.inputP.nama_pegawai,
                         jenis_kelamin: this.inputP.jenis_kelamin,
@@ -158,7 +158,7 @@ export default {
                         alamat_pegawai: this.inputP.alamat_pegawai
                     })
                 } else {
-                    this.products.push({
+                    this.Setting.push({
                         nip_pegawai: this.inputP.nip_pegawai,
                         nama_pegawai: this.inputP.nama_pegawai,
                         jenis_kelamin: this.inputP.jenis_kelamin,
